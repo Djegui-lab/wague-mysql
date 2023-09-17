@@ -1,4 +1,5 @@
 import streamlit as st
+import mysql
 import mysql.connector
 import pandas as pd 
 from decouple import config
