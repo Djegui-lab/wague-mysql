@@ -1,13 +1,25 @@
 import streamlit as st
 import mysql.connector
 import pandas as pd 
-# Créez une connexion à la base de données MySQL locale
+from decouple import config
+
+
+# Charger les variables d'environnement depuis le fichier .env
+MYSQL_USER = config('MYSQL_USER')
+MYSQL_PASSWORD = config('MYSQL_PASSWORD')
+MYSQL_HOST = config('MYSQL_HOST')
+MYSQL_DATABASE = config('MYSQL_DATABASE')
+
+
+# Créez une connexion à la base de données en utilisant les variables d'environnement
 conn = mysql.connector.connect(
-    host="localhost",  # Ou l'adresse IP de votre serveur MySQL local
-    user="fred",
-    password="12345",
-    database="ma_base_donneesmysql"
+    user=MYSQL_USER,
+    password=MYSQL_PASSWORD,
+    host=MYSQL_HOST,
+    database=MYSQL_DATABASE
 )
+
+
 
 # Créez un curseur pour exécuter des requêtes SQL
 cursor = conn.cursor()
